@@ -9,25 +9,31 @@ namespace Evaluacion1.Controladores
     {
         private List<Usuario> dgUsuarios = new List<Usuario>(); // Declarar e inicializar la lista
 
+        // Obtener la lista de usuarios
         public List<Usuario> ObtenerListaUsuarios()
         {
             return datos.Usuarios;
         }
 
+        // Guardar un usuario en la lista
         public void GuardarUsuario(Usuario usuario)
         {
             datos.Usuarios.Add(usuario);
         }
 
+        // Eliminar un usuario de la lista por índice
         public void EliminarUsuario(int index)
         {
             datos.Usuarios.RemoveAt(index);
         }
+
+        // Obtener un usuario por su Rut
         public Usuario ObtenerUsuarioPorRut(string rut)
         {
             return datos.Usuarios.FirstOrDefault(usuario => usuario.Rut == rut);
         }
 
+        // Guardar un usuario sin realizar validaciones adicionales
         public void GuardarUsuarioSinValidacion(Usuario usuario)
         {
             // Simplemente guardar el usuario sin realizar validaciones adicionales
@@ -35,16 +41,19 @@ namespace Evaluacion1.Controladores
             dgUsuarios.Add(usuario); // Agregar el usuario a la lista
         }
 
+        // Verificar si existe un usuario con el mismo Rut
         public bool ExisteUsuarioConRut(string rut)
         {
-            // Verificar si existe un usuario con el mismo Rut
             return datos.Usuarios.Any(usuario => usuario.Rut == rut);
         }
+
+        // Verificar si existe un usuario con el mismo número de última factura
         public bool ExisteUsuarioConNumeroUltimaFactura(int numeroUltimaFactura)
         {
-            // Verificar si existe un usuario con el mismo número de última factura
             return datos.Usuarios.Any(usuario => usuario.NumeroUltimaFactura == numeroUltimaFactura);
         }
+
+        // Actualizar los datos de un usuario existente
         public void ActualizarUsuario(Usuario usuario)
         {
             // Encuentra el usuario en tu lista y actualiza sus datos
@@ -62,6 +71,5 @@ namespace Evaluacion1.Controladores
                 usuarioExistente.MontoUltimaFactura = usuario.MontoUltimaFactura;
             }
         }
-
     }
 }
